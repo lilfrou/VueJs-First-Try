@@ -1957,6 +1957,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1996,6 +2000,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2260,6 +2274,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["compagnieToEdit"],
   methods: {
@@ -2272,7 +2323,7 @@ __webpack_require__.r(__webpack_exports__);
         date: this.compagnieToEdit.date,
         employes: this.compagnieToEdit.employes
       }).then(function (response) {
-        return _this.$emit('compagnieUpdated', response);
+        return _this.$emit("compagnieUpdated", response);
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -38469,19 +38520,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: {
-          type: "button",
-          "data-toggle": "modal",
-          "data-target": "#exampleModal"
-        }
-      },
-      [_vm._v("Add")]
-    ),
-    _vm._v(" "),
-    _c(
       "div",
       {
         staticClass: "modal fade",
@@ -38496,126 +38534,146 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          { staticClass: "modal-dialog modal-sm", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Name:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "name",
-                      id: "name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("div", { staticClass: "block-content font-size-sm" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "name" } }, [
+                        _vm._v("Name:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.name,
+                            expression: "name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          id: "name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.name = $event.target.value
+                          }
                         }
-                        _vm.name = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "type" } }, [_vm._v("Type:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.type,
-                        expression: "type"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "type",
-                      id: "type",
-                      required: ""
-                    },
-                    domProps: { value: _vm.type },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "type" } }, [
+                        _vm._v("Type:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.type,
+                            expression: "type"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "type",
+                          id: "type",
+                          required: ""
+                        },
+                        domProps: { value: _vm.type },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.type = $event.target.value
+                          }
                         }
-                        _vm.type = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "date" } }, [_vm._v("Date:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.date,
-                        expression: "date"
-                      }
-                    ],
-                    attrs: {
-                      type: "date",
-                      name: "date",
-                      id: "date",
-                      required: ""
-                    },
-                    domProps: { value: _vm.date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "date" } }, [
+                        _vm._v("Date:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.date,
+                            expression: "date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "date",
+                          name: "date",
+                          id: "date",
+                          required: ""
+                        },
+                        domProps: { value: _vm.date },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.date = $event.target.value
+                          }
                         }
-                        _vm.date = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "employes" } }, [
-                    _vm._v("employes:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.employes,
-                        expression: "employes"
-                      }
-                    ],
-                    attrs: {
-                      type: "number",
-                      name: "employes",
-                      id: "employes",
-                      required: ""
-                    },
-                    domProps: { value: _vm.employes },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "employes" } }, [
+                        _vm._v("employes:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.employes,
+                            expression: "employes"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          name: "employes",
+                          id: "employes",
+                          required: ""
+                        },
+                        domProps: { value: _vm.employes },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.employes = $event.target.value
+                          }
                         }
-                        _vm.employes = $event.target.value
-                      }
-                    }
-                  })
+                      })
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -38655,7 +38713,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Create")]
       ),
       _vm._v(" "),
       _c(
@@ -38728,7 +38786,7 @@ var render = function() {
           "div",
           { staticClass: "card" },
           [
-            _c("div", { staticClass: "card-header" }, [_vm._v("compagnie")]),
+            _vm._m(0),
             _vm._v(" "),
             _c("addCompagnie"),
             _vm._v(" "),
@@ -38858,7 +38916,30 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n          compagnie\n          "),
+      _c("div", { staticClass: "float-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: {
+              type: "button",
+              "data-toggle": "modal",
+              "data-target": "#exampleModal"
+            }
+          },
+          [_vm._v("Add")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38949,7 +39030,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Delete")]
       ),
       _vm._v(" "),
       _c(
@@ -39004,142 +39085,162 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          { staticClass: "modal-dialog modal-sm", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Name:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.compagnieToEdit.name,
-                        expression: "compagnieToEdit.name"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "name",
-                      id: "name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.compagnieToEdit.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("div", { staticClass: "block-content font-size-sm" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "name" } }, [
+                        _vm._v("Name:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.compagnieToEdit.name,
+                            expression: "compagnieToEdit.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          id: "name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.compagnieToEdit.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.compagnieToEdit,
+                              "name",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.compagnieToEdit,
-                          "name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "type" } }, [_vm._v("Type:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.compagnieToEdit.type,
-                        expression: "compagnieToEdit.type"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "type",
-                      id: "type",
-                      required: ""
-                    },
-                    domProps: { value: _vm.compagnieToEdit.type },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "type" } }, [
+                        _vm._v("Type:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.compagnieToEdit.type,
+                            expression: "compagnieToEdit.type"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "type",
+                          id: "type",
+                          required: ""
+                        },
+                        domProps: { value: _vm.compagnieToEdit.type },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.compagnieToEdit,
+                              "type",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.compagnieToEdit,
-                          "type",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "date" } }, [_vm._v("Date:")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.compagnieToEdit.date,
-                        expression: "compagnieToEdit.date"
-                      }
-                    ],
-                    attrs: {
-                      type: "date",
-                      name: "date",
-                      id: "date",
-                      required: ""
-                    },
-                    domProps: { value: _vm.compagnieToEdit.date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "date" } }, [
+                        _vm._v("Date:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.compagnieToEdit.date,
+                            expression: "compagnieToEdit.date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "date",
+                          name: "date",
+                          id: "date",
+                          required: ""
+                        },
+                        domProps: { value: _vm.compagnieToEdit.date },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.compagnieToEdit,
+                              "date",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.compagnieToEdit,
-                          "date",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "employes" } }, [
-                    _vm._v("employes:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.compagnieToEdit.employes,
-                        expression: "compagnieToEdit.employes"
-                      }
-                    ],
-                    attrs: {
-                      type: "number",
-                      name: "employes",
-                      id: "employes",
-                      required: ""
-                    },
-                    domProps: { value: _vm.compagnieToEdit.employes },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "employes" } }, [
+                        _vm._v("employes:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.compagnieToEdit.employes,
+                            expression: "compagnieToEdit.employes"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          name: "employes",
+                          id: "employes",
+                          required: ""
+                        },
+                        domProps: { value: _vm.compagnieToEdit.employes },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.compagnieToEdit,
+                              "employes",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.compagnieToEdit,
-                          "employes",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                      })
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -39179,7 +39280,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Update")]
       ),
       _vm._v(" "),
       _c(

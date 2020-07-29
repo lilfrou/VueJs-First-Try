@@ -11,35 +11,72 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Update</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form>
-              <label for="name">Name:</label>
-              <input type="text" name="name" id="name" v-model="compagnieToEdit.name" required />
-              <label for="type">Type:</label>
-              <input type="text" name="type" id="type" v-model="compagnieToEdit.type" required />
-              <label for="date">Date:</label>
-              <input type="date" name="date" id="date" v-model="compagnieToEdit.date" required />
-              <label for="employes">employes:</label>
-              <input
-                type="number"
-                name="employes"
-                id="employes"
-                v-model="compagnieToEdit.employes"
-                required
-              />
+              <div class="block-content font-size-sm">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    v-model="compagnieToEdit.name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="type">Type:</label>
+                  <input
+                    type="text"
+                    name="type"
+                    id="type"
+                    class="form-control"
+                    v-model="compagnieToEdit.type"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="date">Date:</label>
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    class="form-control"
+                    v-model="compagnieToEdit.date"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="employes">employes:</label>
+                  <input
+                    type="number"
+                    name="employes"
+                    id="employes"
+                    v-model="compagnieToEdit.employes"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" @click="updateCompagnie" data-dismiss="modal">Save changes</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              @click="updateCompagnie"
+              data-dismiss="modal"
+            >Save changes</button>
           </div>
         </div>
       </div>
@@ -55,11 +92,11 @@ export default {
       axios
         .post("api/compagnie/Edit/" + this.compagnieToEdit.id, {
           name: this.compagnieToEdit.name,
-           type: this.compagnieToEdit.type,
-            date: this.compagnieToEdit.date,
-             employes: this.compagnieToEdit.employes,
+          type: this.compagnieToEdit.type,
+          date: this.compagnieToEdit.date,
+          employes: this.compagnieToEdit.employes,
         })
-        .then((response) => this.$emit('compagnieUpdated',response))
+        .then((response) => this.$emit("compagnieUpdated", response))
         .catch((error) => console.log(error));
     },
   },

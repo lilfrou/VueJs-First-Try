@@ -14,7 +14,17 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-header">compagnie</div>
+          <div class="card-header">
+            compagnie
+            <div class="float-right">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >Add</button>
+            </div>
+          </div>
 
           <addCompagnie></addCompagnie>
 

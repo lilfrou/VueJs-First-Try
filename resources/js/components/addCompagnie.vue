@@ -1,12 +1,6 @@
 <template>
   <div>
     <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#exampleModal"
-    >Add</button>
 
     <!-- Modal -->
     <div
@@ -17,24 +11,34 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form>
-              <label for="name">Name:</label>
-              <input type="text" name="name" id="name" v-model="name" required >
-              <label for="type">Type:</label>
-              <input type="text" name="type" id="type" v-model="type" required >
-              <label for="date">Date:</label>
-              <input type="date" name="date" id="date" v-model="date" required >
-              <label for="employes">employes:</label>
-              <input type="number" name="employes" id="employes" v-model="employes" required >
+              <div class="block-content font-size-sm">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" name="name" id="name"  class="form-control" v-model="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="type">Type:</label>
+                  <input type="text" name="type" id="type"  class="form-control" v-model="type" required />
+                </div>
+                <div class="form-group">
+                  <label for="date">Date:</label>
+                  <input type="date" name="date" id="date"  class="form-control" v-model="date" required />
+                </div>
+                <div class="form-group">
+                  <label for="employes">employes:</label>
+                  <input type="number" name="employes" id="employes"  class="form-control" v-model="employes" required />
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -69,7 +73,7 @@ export default {
           date: this.date,
           employes: this.employes,
         })
-        .then((response) =>  window.location.href = "/index")
+        .then((response) => (window.location.href = "/index"))
         .catch((error) => console.log(error));
     },
   },
