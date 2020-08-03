@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="aspp">
+    <div id="app">
         <compagnie>
 
         </compagnie>
