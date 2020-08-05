@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,8 @@ class MessageController extends Controller
             'to' => $this->request->contact_id,
             'text' => $this->request->text
         ]);
+        broadcast(new NewMessage($message));
+
         return $message;
     }
 }

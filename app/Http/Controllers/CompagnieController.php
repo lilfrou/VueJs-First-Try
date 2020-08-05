@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Compagnie;
+use App\Events\ExampleEvent;
 use App\Requests\Request;
 
 class CompagnieController extends Controller
@@ -54,7 +55,6 @@ class CompagnieController extends Controller
     public function refresh()
     {
         $compagnies = $this->compagnie->paginate(10);
-
         return $compagnies;
     }
 }

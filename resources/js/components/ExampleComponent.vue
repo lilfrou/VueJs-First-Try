@@ -17,7 +17,10 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+    let channel= Echo.channel('message-channel');
+      channel.listen('.ExampleEvent',function(data){
+          console.log(data);
+      });
         }
     }
 </script>

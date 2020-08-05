@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Requests\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
@@ -15,7 +16,7 @@ class ContactsController extends Controller
     public function get()
     {
 
-        $contacts = $this->user->latest()->get();
+        $contacts = $this->user->where('id','!=',Auth()->id())->latest()->get();
 
         return $contacts;
     }

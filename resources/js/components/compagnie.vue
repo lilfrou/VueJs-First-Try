@@ -99,6 +99,9 @@ export default {
       .catch((error) => console.log(error));
   },
   mounted() {
+    window.Echo.channel("message-channel").listen(".message-event", (e) => {
+      console.log(e);
+    });
     console.log("Component mounted.");
   },
   methods: {

@@ -20,6 +20,9 @@
                             <li >
                                 <a  href="{{route('index.index')}}"> Index </a>
                             </li>
+                            <li >
+                                <a  href="{{route('index.index2')}}"> Messenger </a>
+                            </li>
 
 
                         </ul>

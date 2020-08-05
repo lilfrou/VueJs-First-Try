@@ -20,9 +20,17 @@ export default {
     };
   },
   mounted() {
-    console.log(this.user);
+    //   let channel= window.Echo.private(`messages.${this.user.id}`);
+    //   channel.listen('.NewMessage',function(data){
+    //       console.log("data");
+    //   });
+    window.Echo.private(`messages.${this.user.id}`).listen(
+      ".NewMessage",
+      (e) => {
+        this.handleIncoming(e.message);
+      }
+    );
 
-    console.log("Component mounted.");
     axios.get("/contacts").then((response) => {
       console.log(response.data);
 
@@ -38,6 +46,13 @@ export default {
     },
     saveNewMessage(text) {
       this.messages.push(text);
+    },
+    handleIncoming(message) {
+      if (this.selectedContact && message.from == this.selectedContact.id) {
+        this.saveNewMessage(message);
+        return;
+      }
+      alert(message.text);
     },
   },
 };

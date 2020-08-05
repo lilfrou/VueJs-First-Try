@@ -17,7 +17,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 //     }
 // ];
 // const router = new VueRouter({routes});
-
+Vue.component('examplecomponent', require('./components/ExampleComponent.vue').default);
 Vue.component('compagnie', require('./components/compagnie.vue').default);
 Vue.component('addCompagnie', require('./components/addCompagnie.vue').default);
 Vue.component('editCompagnie', require('./components/editCompagnie.vue').default);

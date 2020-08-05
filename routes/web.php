@@ -26,6 +26,9 @@ route::get('/index', function () {
 route::get('/index2', function () {
     return view('compagnie.index2');
 })->name('index.index2');
+route::get('/index3', function () {
+    return view('compagnie.index3');
+})->name('index.index3');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contacts', 'ContactsController@get')->name('contacts.get');
