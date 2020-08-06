@@ -14,6 +14,7 @@
           <p class="name">{{contact.name}}</p>
           <p class="email">{{contact.email}}</p>
         </div>
+         <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
       </li>
     </ul>
   </div>
@@ -65,7 +66,7 @@ export default {
                 background: #dfdfdf;
             }
             span.unread {
-                background: #82e0a8;
+                background: #6cb2eb;
                 color: #fff;
                 position: absolute;
                 right: 11px;

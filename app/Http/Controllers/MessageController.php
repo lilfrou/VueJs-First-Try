@@ -17,7 +17,18 @@ class MessageController extends Controller
 
     public function getMessagesFor($id)
     {
-        $messages = $this->message::where('to', $id)->orWhere('from', $id)->get();
+      // mark all messages with the selected contact as read
+      Message::where('from', $id)->where('to', auth()->id())->update(['read' => true]);
+
+      // get all messages between the authenticated user and the selected user
+      $messages = Message::where(function($q) use ($id) {
+          $q->where('from', auth()->id());
+          $q->where('to', $id);
+      })->orWhere(function($q) use ($id) {
+          $q->where('from', $id);
+          $q->where('to', auth()->id());
+      })
+      ->get();
         return $messages;
     }
     public function send()

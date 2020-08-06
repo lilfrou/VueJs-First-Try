@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('from')->index();
             $table->unsignedBigInteger('to')->index();
+            $table->boolean('read')->default(false);
             $table->text('text');
             $table->timestamps();
         });
