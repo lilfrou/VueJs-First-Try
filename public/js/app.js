@@ -2511,14 +2511,30 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     alertDisplay: function alertDisplay() {
-      // $swal function calls SweetAlert into the application with the specified configuration.
-      this.$swal('Heading', 'this is a Heading', 'OK');
-    },
-    getCompagnie: function getCompagnie(id) {
       var _this3 = this;
 
+      this.$swal({
+        title: 'Are you sure?',
+        text: 'You can\'t revert your action',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes Delete it!',
+        cancelButtonText: 'No, Keep it!',
+        showCloseButton: true,
+        showLoaderOnConfirm: true
+      }).then(function (result) {
+        if (result.value) {
+          _this3.$swal('Deleted', 'You successfully deleted this file', 'success');
+        } else {
+          _this3.$swal('Cancelled', 'Your file is still intact', 'info');
+        }
+      });
+    },
+    getCompagnie: function getCompagnie(id) {
+      var _this4 = this;
+
       axios.get("api/compagnie/Edit/" + id).then(function (response) {
-        return _this3.compagnieToEdit = response.data;
+        return _this4.compagnieToEdit = response.data;
       })["catch"](function (error) {
         return console.log(console.error());
       });
@@ -2527,17 +2543,17 @@ __webpack_require__.r(__webpack_exports__);
       this.compagnies = compagnies.data;
     },
     search: function search() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.q.length > 3) {
         axios.get("api/compagnie/" + this.q).then(function (response) {
-          return _this4.compagnies = response.data;
+          return _this5.compagnies = response.data;
         })["catch"](function (error) {
           return console.log(error);
         });
       } else {
         axios.get("api/compagnie").then(function (response) {
-          return _this4.compagnies = response.data;
+          return _this5.compagnies = response.data;
         })["catch"](function (error) {
           return console.log(error);
         });

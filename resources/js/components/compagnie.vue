@@ -115,9 +115,22 @@ export default {
       });
     },
      alertDisplay() {
-        // $swal function calls SweetAlert into the application with the specified configuration.
-        this.$swal('Heading', 'this is a Heading', 'OK');
-      },
+      this.$swal({
+          title: 'Are you sure?',
+          text: 'You can\'t revert your action',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes Delete it!',
+          cancelButtonText: 'No, Keep it!',
+          showCloseButton: true,
+          showLoaderOnConfirm: true
+        }).then((result) => {
+          if(result.value) {
+            this.$swal('Deleted', 'You successfully deleted this file', 'success')
+          } else {
+            this.$swal('Cancelled', 'Your file is still intact', 'info')
+          }
+        })},
     getCompagnie(id) {
       axios
         .get("api/compagnie/Edit/" + id)
