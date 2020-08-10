@@ -27,7 +27,7 @@ class CompagnieController extends Controller
     {
         $this->compagnie->create($this->request->setCompagnies());
 
-        return $this->da();
+        return $this->refresh();
     }
     public function edit($id)
     {
