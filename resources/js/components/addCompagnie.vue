@@ -24,26 +24,59 @@
               <div class="block-content font-size-sm">
                 <div class="form-group">
                   <label for="name">Name:</label>
-                  <input type="text" name="name" id="name"  class="form-control" v-model="name" required />
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    v-model="name"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="type">Type:</label>
-                  <input type="text" name="type" id="type"  class="form-control" v-model="type" required />
+                  <input
+                    type="text"
+                    name="type"
+                    id="type"
+                    class="form-control"
+                    v-model="type"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="date">Date:</label>
-                  <input type="date" name="date" id="date"  class="form-control" v-model="date" required />
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    class="form-control"
+                    v-model="date"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="employes">employes:</label>
-                  <input type="number" name="employes" id="employes"  class="form-control" v-model="employes" required />
+                  <input
+                    type="number"
+                    name="employes"
+                    id="employes"
+                    class="form-control"
+                    v-model="employes"
+                    required
+                  />
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" @click="storeCompagnie">Create</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              @click="storeCompagnie"
+              data-dismiss="modal"
+            >Create</button>
           </div>
         </div>
       </div>
@@ -73,8 +106,14 @@ export default {
           date: this.date,
           employes: this.employes,
         })
-        .then((response) => (window.location.href = "/index"))
-        .catch((error) => console.log(error));
+        .then((response) => this.$emit("added", response))
+        .catch((error) => console.log(error))
+        .finally(
+          () => (this.name = ""),
+          (this.type = ""),
+          (this.date = ""),
+          (this.employes = "")
+        );
     },
   },
 };

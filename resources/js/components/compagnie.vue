@@ -26,7 +26,7 @@
             </div>
           </div>
 
-          <addCompagnie></addCompagnie>
+          <addCompagnie @added="refresh"></addCompagnie>
 
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-vcenter table-hover">

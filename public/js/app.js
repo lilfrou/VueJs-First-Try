@@ -2312,6 +2312,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2326,16 +2359,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     storeCompagnie: function storeCompagnie() {
+      var _this = this;
+
       axios.post("api/compagnieStore", {
         name: this.name,
         type: this.type,
         date: this.date,
         employes: this.employes
       }).then(function (response) {
-        return window.location.href = "/index";
+        return _this.$emit("added", response);
       })["catch"](function (error) {
         return console.log(error);
-      });
+      })["finally"](function () {
+        return _this.name = "";
+      }, this.type = "", this.date = "", this.employes = "");
     }
   }
 });
@@ -52167,7 +52204,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { type: "submit" },
+                    attrs: { type: "submit", "data-dismiss": "modal" },
                     on: { click: _vm.storeCompagnie }
                   },
                   [_vm._v("Create")]
@@ -52264,7 +52301,7 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
-            _c("addCompagnie"),
+            _c("addCompagnie", { on: { added: _vm.refresh } }),
             _vm._v(" "),
             _c(
               "div",
