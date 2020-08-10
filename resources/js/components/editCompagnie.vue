@@ -71,12 +71,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              @click="updateCompagnie"
-              data-dismiss="modal"
-            >Save changes</button>
+            <button type="submit" class="btn btn-primary" @click="updateCompagnie">Save changes</button>
           </div>
         </div>
       </div>
@@ -96,8 +91,21 @@ export default {
           date: this.compagnieToEdit.date,
           employes: this.compagnieToEdit.employes,
         })
-        .then((response) => this.$emit("compagnieUpdated", response))
-        .catch((error) => console.log(error));
+        .then((response) =>
+          this.$emit(
+            "compagnieUpdated",
+            response,
+            this.flashSuccess("Edited", {
+              timeout: 2000,
+            }),
+            $("#editModal").modal("hide")
+          )
+        )
+        .catch((error) =>
+          this.flashError(error, {
+            timeout: 2000,
+          }), $("#editModal").modal("hide")
+        );
     },
   },
 };

@@ -2698,7 +2698,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["compagnieToEdit"],
   methods: {
@@ -2706,9 +2705,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("api/compagnie/delete/" + this.compagnieToEdit.id).then(function (response) {
-        return _this.$emit('compagnieDeleted', response);
-      })["catch"](function (error) {
-        return console.log(error);
+        return _this.$emit('compagnieDeleted', response, _this.flashSuccess("Deleted", {
+          timeout: 2000
+        }));
+      }, $("#deleteModal").modal("hide"))["catch"](function (error) {
+        return _this.flashError(error, {
+          timeout: 2000
+        });
       });
     }
   }
@@ -2806,11 +2809,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["compagnieToEdit"],
   methods: {
@@ -2823,10 +2821,14 @@ __webpack_require__.r(__webpack_exports__);
         date: this.compagnieToEdit.date,
         employes: this.compagnieToEdit.employes
       }).then(function (response) {
-        return _this.$emit("compagnieUpdated", response);
+        return _this.$emit("compagnieUpdated", response, _this.flashSuccess("Edited", {
+          timeout: 2000
+        }), $("#editModal").modal("hide"));
       })["catch"](function (error) {
-        return console.log(error);
-      });
+        return _this.flashError(error, {
+          timeout: 2000
+        });
+      }, $("#editModal").modal("hide"));
     }
   }
 });
@@ -52691,7 +52693,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-danger",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: { type: "submit" },
                     on: { click: _vm.deleteCompagnie }
                   },
                   [_vm._v("Delete")]
@@ -52941,7 +52943,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: { type: "submit" },
                     on: { click: _vm.updateCompagnie }
                   },
                   [_vm._v("Save changes")]

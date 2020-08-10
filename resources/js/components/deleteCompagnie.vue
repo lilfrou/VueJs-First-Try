@@ -30,7 +30,6 @@
               type="submit"
               class="btn btn-danger"
               @click="deleteCompagnie"
-              data-dismiss="modal"
             >Delete</button>
           </div>
         </div>
@@ -46,8 +45,15 @@ export default {
   methods: {
     deleteCompagnie() {
         axios.post("api/compagnie/delete/" + this.compagnieToEdit.id)
-       .then((response) => this.$emit('compagnieDeleted',response))
-        .catch((error) => console.log(error));
+       .then((response) => this.$emit('compagnieDeleted',response,this.flashSuccess("Deleted", {
+              timeout: 2000,
+            })),
+            $("#deleteModal").modal("hide"),
+          )
+        .catch((error) => this.flashError(error, {
+              timeout: 2000,
+            })
+          );
     },
   },
 };
