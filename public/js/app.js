@@ -2340,11 +2340,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2361,20 +2356,24 @@ __webpack_require__.r(__webpack_exports__);
     storeCompagnie: function storeCompagnie() {
       var _this = this;
 
-      axios.post("api/compagnieStore", {
-        name: this.name,
-        type: this.type,
-        date: this.date,
-        employes: this.employes
-      }).then(function (response) {
-        return _this.$emit("added", response);
-      })["catch"](function (error) {
-        return console.log(error);
-      })["finally"](function () {
-        return _this.name = "";
-      }, this.type = "", this.date = "", this.employes = "", this.flashSuccess("Data loaded", {
-        timeout: 2000
-      }));
+      if (this.name != "" || this.type != "" || this.date != "" || this.employes != "") {
+        axios.post("api/compagnieStore", {
+          name: this.name,
+          type: this.type,
+          date: this.date,
+          employes: this.employes
+        }).then(function (response) {
+          return _this.$emit("added", response);
+        }, $("#hhhhhh").modal("hide"), this.flashSuccess("Added", {
+          timeout: 2000
+        }))["catch"](function (error) {
+          return _this.flashError("Error", {
+            timeout: 2000
+          });
+        })["finally"](function () {
+          return _this.name = "";
+        }, this.type = "", this.date = "", this.employes = "");
+      }
     }
   }
 });
@@ -52102,7 +52101,7 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "exampleModal",
+          id: "hhhhhh",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
@@ -52269,7 +52268,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    attrs: { type: "submit" },
                     on: { click: _vm.storeCompagnie }
                   },
                   [_vm._v("Create")]
@@ -52516,7 +52515,7 @@ var staticRenderFns = [
             attrs: {
               type: "button",
               "data-toggle": "modal",
-              "data-target": "#exampleModal"
+              "data-target": "#hhhhhh"
             }
           },
           [_vm._v("Add")]

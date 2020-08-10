@@ -5,7 +5,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="hhhhhh"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -71,12 +71,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              @click="storeCompagnie"
-              data-dismiss="modal"
-            >Create</button>
+            <button type="submit" class="btn btn-primary" @click="storeCompagnie">Create</button>
           </div>
         </div>
       </div>
@@ -99,24 +94,36 @@ export default {
   },
   methods: {
     storeCompagnie() {
-      axios
-        .post("api/compagnieStore", {
-          name: this.name,
-          type: this.type,
-          date: this.date,
-          employes: this.employes,
-        })
-        .then((response) => this.$emit("added", response))
-        .catch((error) => console.log(error))
-        .finally(
-          () => (this.name = ""),
-          (this.type = ""),
-          (this.date = ""),
-          (this.employes = ""),
-          this.flashSuccess("Data loaded", {
-            timeout: 2000,
+      if (
+        this.name != "" ||
+        this.type != "" ||
+        this.date != "" ||
+        this.employes != ""
+      ) {
+        axios
+          .post("api/compagnieStore", {
+            name: this.name,
+            type: this.type,
+            date: this.date,
+            employes: this.employes,
           })
-        );
+          .then(
+            (response) => this.$emit("added", response),
+            $("#hhhhhh").modal("hide"), this.flashSuccess("Added", {
+              timeout: 2000,
+            })
+          )
+          .catch((error) => this.flashError("Error", {
+              timeout: 2000,
+            })
+          )
+          .finally(
+            () => (this.name = ""),
+            (this.type = ""),
+            (this.date = ""),
+            (this.employes = ""),
+          );
+      }
     },
   },
 };
