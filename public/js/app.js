@@ -2363,11 +2363,11 @@ __webpack_require__.r(__webpack_exports__);
           date: this.date,
           employes: this.employes
         }).then(function (response) {
-          return _this.$emit("added", response);
-        }, $("#hhhhhh").modal("hide"), this.flashSuccess("Added", {
-          timeout: 2000
-        }))["catch"](function (error) {
-          return _this.flashError("Error", {
+          return _this.$emit("added", response, _this.flashSuccess("Added", {
+            timeout: 2000
+          }));
+        }, $("#hhhhhh").modal("hide"))["catch"](function (error) {
+          return _this.flashError(error, {
             timeout: 2000
           });
         })["finally"](function () {

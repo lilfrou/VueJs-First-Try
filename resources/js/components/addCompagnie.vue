@@ -108,12 +108,12 @@ export default {
             employes: this.employes,
           })
           .then(
-            (response) => this.$emit("added", response),
-            $("#hhhhhh").modal("hide"), this.flashSuccess("Added", {
+            (response) => this.$emit("added", response, this.flashSuccess("Added", {
               timeout: 2000,
-            })
+            })),
+            $("#hhhhhh").modal("hide"),
           )
-          .catch((error) => this.flashError("Error", {
+          .catch((error) => this.flashError(error, {
               timeout: 2000,
             })
           )
