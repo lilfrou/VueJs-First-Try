@@ -15,7 +15,7 @@
             />
           </div>
         </div>
-
+<button v-on:click="alertDisplay">Click me</button>
         <div class="card">
           <div class="card-header">
             compagnie
@@ -114,6 +114,10 @@ export default {
         this.compagnies = response.data;
       });
     },
+     alertDisplay() {
+        // $swal function calls SweetAlert into the application with the specified configuration.
+        this.$swal('Heading', 'this is a Heading', 'OK');
+      },
     getCompagnie(id) {
       axios
         .get("api/compagnie/Edit/" + id)

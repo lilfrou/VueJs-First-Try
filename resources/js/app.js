@@ -7,6 +7,8 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 import VueFlashMessage from 'vue-flash-message';
 Vue.use(VueFlashMessage);
 require('vue-flash-message/dist/vue-flash-message.min.css');
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
 
 
 // import VueRouter from 'vue-router';
