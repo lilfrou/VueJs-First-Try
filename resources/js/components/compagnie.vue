@@ -126,7 +126,7 @@ export default {
           showLoaderOnConfirm: true
         }).then((result) => {
           if(result.value) {
-            this.$swal('Deleted', 'You successfully deleted this file', 'success')
+            this.$swal('Deleted', 'You successfully deleted this file', 'success'),console.log("firas")
           } else {
             this.$swal('Cancelled', 'Your file is still intact', 'info')
           }

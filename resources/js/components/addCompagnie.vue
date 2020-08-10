@@ -31,7 +31,9 @@
                     class="form-control"
                     v-model="name"
                     required
+                    @input="changeName()"
                   />
+                  <small id="nameError" style="color: red"></small>
                 </div>
                 <div class="form-group">
                   <label for="type">Type:</label>
@@ -93,13 +95,67 @@ export default {
     console.log("Component mounted.");
   },
   methods: {
+    validate() {
+      if (this.name == "") {
+        $('#name').addClass('error');
+        document.getElementById("type").style.border = "1px solid #ced4da";
+        document.getElementById("date").style.border = "1px solid #ced4da";
+        document.getElementById("employes").style.border = "1px solid #ced4da";
+
+        this.$swal({
+          icon: "error",
+          title: "Name is required!",
+          text: "Please fill it!",
+        });
+        document.getElementById("nameError").innerText = "You should fill the name."
+        return false;
+      } else if (this.type == "") {
+        document.getElementById("type").style.border = "1px solid #ff0835";
+        document.getElementById("name").style.border = "1px solid #ced4da";
+        document.getElementById("date").style.border = "1px solid #ced4da";
+        document.getElementById("employes").style.border = "1px solid #ced4da";
+        this.$swal({
+          icon: "error",
+          title: "Type is required!",
+          text: "Please fill it!",
+        });
+        return false;
+      } else if (this.date == "") {
+        document.getElementById("date").style.border = "1px solid #ff0835";
+        document.getElementById("type").style.border = "1px solid #ced4da";
+        document.getElementById("name").style.border = "1px solid #ced4da";
+        document.getElementById("employes").style.border = "1px solid #ced4da";
+        this.$swal({
+          icon: "error",
+          title: "Date is required!",
+          text: "Please fill it!",
+        });
+        return false;
+      } else if (this.employes == "") {
+        document.getElementById("employes").style.border = "1px solid #ff0835";
+        document.getElementById("type").style.border = "1px solid #ced4da";
+        document.getElementById("date").style.border = "1px solid #ced4da";
+        document.getElementById("name").style.border = "1px solid #ced4da";
+        this.$swal({
+          icon: "error",
+          title: "Employes is required!",
+          text: "Please fill it!",
+        });
+        return false;
+      } else {
+         document.getElementById("employes").style.border = "1px solid #ced4da";
+        document.getElementById("type").style.border = "1px solid #ced4da";
+        document.getElementById("date").style.border = "1px solid #ced4da";
+        document.getElementById("name").style.border = "1px solid #ced4da";
+        return true;
+      }
+    },
+    changeName() {
+        $('#name').removeClass('error');
+        document.getElementById("nameError").innerText = ""
+    },
     storeCompagnie() {
-      if (
-        this.name != "" ||
-        this.type != "" ||
-        this.date != "" ||
-        this.employes != ""
-      ) {
+      if (this.validate()) {
         axios
           .post("api/compagnieStore", {
             name: this.name,
@@ -108,12 +164,18 @@ export default {
             employes: this.employes,
           })
           .then(
-            (response) => this.$emit("added", response, this.flashSuccess("Added", {
-              timeout: 2000,
-            })),
-            $("#hhhhhh").modal("hide"),
+            (response) =>
+              this.$emit(
+                "added",
+                response,
+                this.flashSuccess("Added", {
+                  timeout: 2000,
+                })
+              ),
+            $("#hhhhhh").modal("hide")
           )
-          .catch((error) => this.flashError(error, {
+          .catch((error) =>
+            this.flashError(error, {
               timeout: 2000,
             })
           )
@@ -121,10 +183,15 @@ export default {
             () => (this.name = ""),
             (this.type = ""),
             (this.date = ""),
-            (this.employes = ""),
+            (this.employes = "")
           );
       }
     },
   },
 };
 </script>
+<style>
+.error {
+    border: 1px solid #ff0835;
+}
+</style>
