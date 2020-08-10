@@ -112,7 +112,10 @@ export default {
           () => (this.name = ""),
           (this.type = ""),
           (this.date = ""),
-          (this.employes = "")
+          (this.employes = ""),
+          this.flashSuccess("Data loaded", {
+            timeout: 2000,
+          })
         );
     },
   },

@@ -1,5 +1,7 @@
 <template>
+
   <div class="container">
+        <flash-message class="myCustomClass"></flash-message>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="form-row">
@@ -13,6 +15,7 @@
             />
           </div>
         </div>
+
         <div class="card">
           <div class="card-header">
             compagnie
