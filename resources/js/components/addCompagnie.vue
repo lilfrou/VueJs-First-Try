@@ -31,7 +31,7 @@
                     class="form-control"
                     v-model="name"
                     required
-                    @input="changeName()"
+                    @input="change('name')"
                   />
                   <small id="nameError" style="color: red"></small>
                 </div>
@@ -44,7 +44,9 @@
                     class="form-control"
                     v-model="type"
                     required
+                     @input="change('type')"
                   />
+                  <small id="typeError" style="color: red"></small>
                 </div>
                 <div class="form-group">
                   <label for="date">Date:</label>
@@ -55,7 +57,9 @@
                     class="form-control"
                     v-model="date"
                     required
+                     @input="change('date')"
                   />
+                  <small id="dateError" style="color: red"></small>
                 </div>
                 <div class="form-group">
                   <label for="employes">employes:</label>
@@ -66,7 +70,9 @@
                     class="form-control"
                     v-model="employes"
                     required
+                     @input="change('employes')"
                   />
+                    <small id="employesError" style="color: red"></small>
                 </div>
               </div>
             </form>
@@ -107,10 +113,10 @@ export default {
           title: "Name is required!",
           text: "Please fill it!",
         });
-        document.getElementById("nameError").innerText = "You should fill the name."
+        document.getElementById("nameError").innerText = "Name is required."
         return false;
       } else if (this.type == "") {
-        document.getElementById("type").style.border = "1px solid #ff0835";
+        $('#type').addClass('error');
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -119,9 +125,11 @@ export default {
           title: "Type is required!",
           text: "Please fill it!",
         });
+            document.getElementById("typeError").innerText = "type is required."
+
         return false;
       } else if (this.date == "") {
-        document.getElementById("date").style.border = "1px solid #ff0835";
+         $('#date').addClass('error');
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -130,9 +138,10 @@ export default {
           title: "Date is required!",
           text: "Please fill it!",
         });
+         document.getElementById("dateError").innerText = "date is required."
         return false;
       } else if (this.employes == "") {
-        document.getElementById("employes").style.border = "1px solid #ff0835";
+                 $('#employes').addClass('error');
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
@@ -141,6 +150,7 @@ export default {
           title: "Employes is required!",
           text: "Please fill it!",
         });
+        document.getElementById("employesError").innerText = "employes is required."
         return false;
       } else {
          document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -150,9 +160,10 @@ export default {
         return true;
       }
     },
-    changeName() {
-        $('#name').removeClass('error');
-        document.getElementById("nameError").innerText = ""
+    change(tar) {
+
+        $('#'+tar).removeClass('error');
+        document.getElementById(tar +"Error").innerText = ""
     },
     storeCompagnie() {
       if (this.validate()) {
@@ -191,7 +202,11 @@ export default {
 };
 </script>
 <style>
-.error {
-    border: 1px solid #ff0835;
+@keyframes blink {
+   50% { border-color: #ff0000; }
 }
+.error {
+    animation: blink .5s step-end infinite alternate;
+}
+
 </style>

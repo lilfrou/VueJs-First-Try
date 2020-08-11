@@ -2342,6 +2342,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2366,10 +2372,10 @@ __webpack_require__.r(__webpack_exports__);
           title: "Name is required!",
           text: "Please fill it!"
         });
-        document.getElementById("nameError").innerText = "You should fill the name.";
+        document.getElementById("nameError").innerText = "Name is required.";
         return false;
       } else if (this.type == "") {
-        document.getElementById("type").style.border = "1px solid #ff0835";
+        $('#type').addClass('error');
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2378,9 +2384,10 @@ __webpack_require__.r(__webpack_exports__);
           title: "Type is required!",
           text: "Please fill it!"
         });
+        document.getElementById("typeError").innerText = "type is required.";
         return false;
       } else if (this.date == "") {
-        document.getElementById("date").style.border = "1px solid #ff0835";
+        $('#date').addClass('error');
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2389,9 +2396,10 @@ __webpack_require__.r(__webpack_exports__);
           title: "Date is required!",
           text: "Please fill it!"
         });
+        document.getElementById("dateError").innerText = "date is required.";
         return false;
       } else if (this.employes == "") {
-        document.getElementById("employes").style.border = "1px solid #ff0835";
+        $('#employes').addClass('error');
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
@@ -2400,6 +2408,7 @@ __webpack_require__.r(__webpack_exports__);
           title: "Employes is required!",
           text: "Please fill it!"
         });
+        document.getElementById("employesError").innerText = "employes is required.";
         return false;
       } else {
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2409,9 +2418,9 @@ __webpack_require__.r(__webpack_exports__);
         return true;
       }
     },
-    changeName: function changeName() {
-      $('#name').removeClass('error');
-      document.getElementById("nameError").innerText = "";
+    change: function change(tar) {
+      $('#' + tar).removeClass('error');
+      document.getElementById(tar + "Error").innerText = "";
     },
     storeCompagnie: function storeCompagnie() {
       var _this = this;
@@ -9978,7 +9987,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.error {\n    border: 1px solid #ff0835;\n}\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n@keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n.error {\n    -webkit-animation: blink .5s step-end infinite alternate;\n            animation: blink .5s step-end infinite alternate;\n}\n\n", ""]);
 
 // exports
 
@@ -55471,7 +55480,7 @@ var render = function() {
                               _vm.name = $event.target.value
                             },
                             function($event) {
-                              return _vm.changeName()
+                              return _vm.change("name")
                             }
                           ]
                         }
@@ -55506,13 +55515,23 @@ var render = function() {
                         },
                         domProps: { value: _vm.type },
                         on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.type = $event.target.value
+                            },
+                            function($event) {
+                              return _vm.change("type")
                             }
-                            _vm.type = $event.target.value
-                          }
+                          ]
                         }
+                      }),
+                      _vm._v(" "),
+                      _c("small", {
+                        staticStyle: { color: "red" },
+                        attrs: { id: "typeError" }
                       })
                     ]),
                     _vm._v(" "),
@@ -55539,13 +55558,23 @@ var render = function() {
                         },
                         domProps: { value: _vm.date },
                         on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.date = $event.target.value
+                            },
+                            function($event) {
+                              return _vm.change("date")
                             }
-                            _vm.date = $event.target.value
-                          }
+                          ]
                         }
+                      }),
+                      _vm._v(" "),
+                      _c("small", {
+                        staticStyle: { color: "red" },
+                        attrs: { id: "dateError" }
                       })
                     ]),
                     _vm._v(" "),
@@ -55572,13 +55601,23 @@ var render = function() {
                         },
                         domProps: { value: _vm.employes },
                         on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          input: [
+                            function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.employes = $event.target.value
+                            },
+                            function($event) {
+                              return _vm.change("employes")
                             }
-                            _vm.employes = $event.target.value
-                          }
+                          ]
                         }
+                      }),
+                      _vm._v(" "),
+                      _c("small", {
+                        staticStyle: { color: "red" },
+                        attrs: { id: "employesError" }
                       })
                     ])
                   ])
