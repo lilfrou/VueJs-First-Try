@@ -19,6 +19,7 @@ class CreateCompagniesTable extends Migration
             $table->string('type');
             $table->date('date');
             $table->integer('employes');
+            $table->string('image');
             $table->timestamps();
         });
     }

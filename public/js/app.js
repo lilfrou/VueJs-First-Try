@@ -2385,19 +2385,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: "",
       type: "",
       date: "",
-      employes: ""
+      employes: "",
+      image: ""
     };
   },
   mounted: function mounted() {
     console.log("Component mounted.");
   },
   methods: {
+    onImageChange: function onImageChange(e) {
+      console.log(e.target.files[0]);
+      this.image = e.target.files[0];
+    },
     validate: function validate() {
       if (this.name == "") {
         $('#name').addClass('error');
@@ -2463,12 +2471,19 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.validate()) {
-        axios.post("api/compagnieStore", {
-          name: this.name,
-          type: this.type,
-          date: this.date,
-          employes: this.employes
-        }).then(function (response) {
+        var currentObj = this;
+        var config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+        var formData = new FormData();
+        formData.append('name', this.name);
+        formData.append('type', this.type);
+        formData.append('date', this.date);
+        formData.append('employes', this.employes);
+        formData.append('image', this.image);
+        axios.post("api/compagnieStore", formData, config).then(function (response) {
           return _this.$emit("added", response, _this.flashSuccess("Added", {
             timeout: 2000
           }));
@@ -10024,7 +10039,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n@-webkit-keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n@keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n.error {\r\n    -webkit-animation: blink .5s step-end infinite alternate;\r\n            animation: blink .5s step-end infinite alternate;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n@keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n.error {\n    -webkit-animation: blink .5s step-end infinite alternate;\n            animation: blink .5s step-end infinite alternate;\n}\n\n", ""]);
 
 // exports
 
@@ -55706,6 +55721,13 @@ var render = function() {
                       _c("small", {
                         staticStyle: { color: "red" },
                         attrs: { id: "employesError" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        attrs: { type: "file" },
+                        on: { change: _vm.onImageChange }
                       })
                     ])
                   ])

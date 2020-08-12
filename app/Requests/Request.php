@@ -11,7 +11,8 @@ class Request
             'name' => 'required',
             'type' => 'required',
             'date' => 'required',
-            'employes' =>'required'
+            'employes' =>'required',
+            'image' => 'required'
         ]);
     }
 

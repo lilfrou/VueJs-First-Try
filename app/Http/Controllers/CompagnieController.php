@@ -26,7 +26,6 @@ class CompagnieController extends Controller
     public function store(Request $request)
     {
         $this->compagnie->create($this->request->setCompagnies());
-
         return $this->refresh();
     }
     public function edit($id)

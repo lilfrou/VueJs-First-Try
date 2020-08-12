@@ -74,6 +74,9 @@
                   />
                     <small id="employesError" style="color: red"></small>
                 </div>
+                <div class="form-group">
+                    <input type="file" v-on:change="onImageChange">
+                </div>
               </div>
             </form>
           </div>
@@ -95,12 +98,17 @@ export default {
       type: "",
       date: "",
       employes: "",
+      image:""
     };
   },
   mounted() {
     console.log("Component mounted.");
   },
   methods: {
+        onImageChange(e){
+                console.log(e.target.files[0]);
+                this.image = e.target.files[0];
+            },
     validate() {
       if (this.name == "") {
         $('#name').addClass('error');
@@ -167,13 +175,20 @@ export default {
     },
     storeCompagnie() {
       if (this.validate()) {
+            let currentObj = this;
+
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+
+                let formData = new FormData();
+                formData.append('name', this.name);
+                formData.append('type', this.type);
+                formData.append('date', this.date);
+                formData.append('employes', this.employes);
+                formData.append('image', this.image);
         axios
-          .post("api/compagnieStore", {
-            name: this.name,
-            type: this.type,
-            date: this.date,
-            employes: this.employes,
-          })
+          .post("api/compagnieStore",formData , config)
           .then(
             (response) =>
               this.$emit(
