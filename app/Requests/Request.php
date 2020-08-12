@@ -15,6 +15,12 @@ class Request
             'image' => 'required'
         ]);
     }
+    public function saveFile($date, $name)
+    {
+        if(request()->has($name)) {
+            $date->update([$name => request($name)->store($name, 'public')]);
+        }
+    }
 
 
 }

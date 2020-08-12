@@ -25,7 +25,8 @@ class CompagnieController extends Controller
     }
     public function store(Request $request)
     {
-        $this->compagnie->create($this->request->setCompagnies());
+        $data=$this->compagnie->create($this->request->setCompagnies());
+        $this->request->saveFile($data, 'image');
         return $this->refresh();
     }
     public function edit($id)
