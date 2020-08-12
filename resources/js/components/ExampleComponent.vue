@@ -3,10 +3,20 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Laravel Vue JS Image Upload - ItSolutionStuff.com</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <div v-if="success != ''" class="alert alert-success" role="alert">
+                          {{success}}
+                        </div>
+                        <form @submit="formSubmit" enctype="multipart/form-data">
+                        <strong>Name:</strong>
+                        <input type="text" class="form-control" id="name" name="name" v-model="name">
+                        <strong>Image:</strong>
+                        <input type="file" class="form-control" v-on:change="onImageChange">
+
+                        <button class="btn btn-success">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -17,10 +27,40 @@
 <script>
     export default {
         mounted() {
-    let channel= Echo.channel('message-channel');
-      channel.listen('.ExampleEvent',function(data){
-          console.log(data);
-      });
+            console.log('Component mounted.')
+        },
+        data() {
+            return {
+              name: '',
+              image: '',
+              success: ''
+            };
+        },
+        methods: {
+            onImageChange(e){
+                console.log(e.target.files[0]);
+                this.image = e.target.files[0];
+            },
+            formSubmit(e) {
+                e.preventDefault();
+                let currentObj = this;
+
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+
+                let formData = new FormData();
+                formData.append('image', this.image);
+                 formData.append('name', this.name);
+
+                axios.post('/image',formData , config)
+                .then(function (response) {
+                    currentObj.success = response.data.success;
+                })
+                .catch(function (error) {
+                    currentObj.output = error;
+                });
+            }
         }
     }
 </script>

@@ -34,6 +34,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contacts', 'ContactsController@get')->name('contacts.get');
 Route::get('/conversation/{id}', 'MessageController@getMessagesFor')->name('message.getMessagesFor');
 Route::post('/conversation/send', 'MessageController@send')->name('message.send');
-
+Route::post('image','ImageController@store');
 
 
