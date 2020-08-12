@@ -44,7 +44,7 @@
                     class="form-control"
                     v-model="type"
                     required
-                     @input="change('type')"
+                    @input="change('type')"
                   />
                   <small id="typeError" style="color: red"></small>
                 </div>
@@ -57,7 +57,7 @@
                     class="form-control"
                     v-model="date"
                     required
-                     @input="change('date')"
+                    @input="change('date')"
                   />
                   <small id="dateError" style="color: red"></small>
                 </div>
@@ -70,12 +70,15 @@
                     class="form-control"
                     v-model="employes"
                     required
-                     @input="change('employes')"
+                    @input="change('employes')"
                   />
-                    <small id="employesError" style="color: red"></small>
+                  <small id="employesError" style="color: red"></small>
                 </div>
                 <div class="form-group">
-                    <input type="file" v-on:change="onImageChange">
+                  <input type="file" v-on:change="onImageChange" />
+                  <div id="preview">
+                    <img v-if="url" :src="url"  />
+                  </div>
                 </div>
               </div>
             </form>
@@ -98,20 +101,22 @@ export default {
       type: "",
       date: "",
       employes: "",
-      image:""
+      image: "",
+      url: "",
     };
   },
   mounted() {
     console.log("Component mounted.");
   },
   methods: {
-        onImageChange(e){
-                console.log(e.target.files[0]);
-                this.image = e.target.files[0];
-            },
+    onImageChange(e) {
+      console.log(e.target.files[0]);
+      this.image = e.target.files[0];
+      this.url = URL.createObjectURL(this.image);
+    },
     validate() {
       if (this.name == "") {
-        $('#name').addClass('error');
+        $("#name").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -121,10 +126,10 @@ export default {
           title: "Name is required!",
           text: "Please fill it!",
         });
-        document.getElementById("nameError").innerText = "Name is required."
+        document.getElementById("nameError").innerText = "Name is required.";
         return false;
       } else if (this.type == "") {
-        $('#type').addClass('error');
+        $("#type").addClass("error");
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -133,11 +138,11 @@ export default {
           title: "Type is required!",
           text: "Please fill it!",
         });
-            document.getElementById("typeError").innerText = "type is required."
+        document.getElementById("typeError").innerText = "type is required.";
 
         return false;
       } else if (this.date == "") {
-         $('#date').addClass('error');
+        $("#date").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -146,10 +151,10 @@ export default {
           title: "Date is required!",
           text: "Please fill it!",
         });
-         document.getElementById("dateError").innerText = "date is required."
+        document.getElementById("dateError").innerText = "date is required.";
         return false;
       } else if (this.employes == "") {
-                 $('#employes').addClass('error');
+        $("#employes").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
@@ -158,10 +163,11 @@ export default {
           title: "Employes is required!",
           text: "Please fill it!",
         });
-        document.getElementById("employesError").innerText = "employes is required."
+        document.getElementById("employesError").innerText =
+          "employes is required.";
         return false;
       } else {
-         document.getElementById("employes").style.border = "1px solid #ced4da";
+        document.getElementById("employes").style.border = "1px solid #ced4da";
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
@@ -169,26 +175,25 @@ export default {
       }
     },
     change(tar) {
-
-        $('#'+tar).removeClass('error');
-        document.getElementById(tar +"Error").innerText = ""
+      $("#" + tar).removeClass("error");
+      document.getElementById(tar + "Error").innerText = "";
     },
     storeCompagnie() {
       if (this.validate()) {
-            let currentObj = this;
+        let currentObj = this;
 
-                const config = {
-                    headers: { 'content-type': 'multipart/form-data' }
-                }
+        const config = {
+          headers: { "content-type": "multipart/form-data" },
+        };
 
-                let formData = new FormData();
-                formData.append('name', this.name);
-                formData.append('type', this.type);
-                formData.append('date', this.date);
-                formData.append('employes', this.employes);
-                formData.append('image', this.image);
+        let formData = new FormData();
+        formData.append("name", this.name);
+        formData.append("type", this.type);
+        formData.append("date", this.date);
+        formData.append("employes", this.employes);
+        formData.append("image", this.image);
         axios
-          .post("api/compagnieStore",formData , config)
+          .post("api/compagnieStore", formData, config)
           .then(
             (response) =>
               this.$emit(
@@ -218,10 +223,21 @@ export default {
 </script>
 <style>
 @keyframes blink {
-   50% { border-color: #ff0000; }
+  50% {
+    border-color: #ff0000;
+  }
 }
 .error {
-    animation: blink .5s step-end infinite alternate;
+  animation: blink 0.5s step-end infinite alternate;
+}
+#preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+#preview img {
+  max-width: 100%;
+  max-height: 500px;
+}
 </style>

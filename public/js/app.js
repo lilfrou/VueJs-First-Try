@@ -2388,6 +2388,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2395,7 +2398,8 @@ __webpack_require__.r(__webpack_exports__);
       type: "",
       date: "",
       employes: "",
-      image: ""
+      image: "",
+      url: ""
     };
   },
   mounted: function mounted() {
@@ -2405,10 +2409,11 @@ __webpack_require__.r(__webpack_exports__);
     onImageChange: function onImageChange(e) {
       console.log(e.target.files[0]);
       this.image = e.target.files[0];
+      this.url = URL.createObjectURL(this.image);
     },
     validate: function validate() {
       if (this.name == "") {
-        $('#name').addClass('error');
+        $("#name").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2420,7 +2425,7 @@ __webpack_require__.r(__webpack_exports__);
         document.getElementById("nameError").innerText = "Name is required.";
         return false;
       } else if (this.type == "") {
-        $('#type').addClass('error');
+        $("#type").addClass("error");
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2432,7 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
         document.getElementById("typeError").innerText = "type is required.";
         return false;
       } else if (this.date == "") {
-        $('#date').addClass('error');
+        $("#date").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
         document.getElementById("employes").style.border = "1px solid #ced4da";
@@ -2444,7 +2449,7 @@ __webpack_require__.r(__webpack_exports__);
         document.getElementById("dateError").innerText = "date is required.";
         return false;
       } else if (this.employes == "") {
-        $('#employes').addClass('error');
+        $("#employes").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
         document.getElementById("name").style.border = "1px solid #ced4da";
@@ -2464,7 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     change: function change(tar) {
-      $('#' + tar).removeClass('error');
+      $("#" + tar).removeClass("error");
       document.getElementById(tar + "Error").innerText = "";
     },
     storeCompagnie: function storeCompagnie() {
@@ -2474,15 +2479,15 @@ __webpack_require__.r(__webpack_exports__);
         var currentObj = this;
         var config = {
           headers: {
-            'content-type': 'multipart/form-data'
+            "content-type": "multipart/form-data"
           }
         };
         var formData = new FormData();
-        formData.append('name', this.name);
-        formData.append('type', this.type);
-        formData.append('date', this.date);
-        formData.append('employes', this.employes);
-        formData.append('image', this.image);
+        formData.append("name", this.name);
+        formData.append("type", this.type);
+        formData.append("date", this.date);
+        formData.append("employes", this.employes);
+        formData.append("image", this.image);
         axios.post("api/compagnieStore", formData, config).then(function (response) {
           return _this.$emit("added", response, _this.flashSuccess("Added", {
             timeout: 2000
@@ -10039,7 +10044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n@-webkit-keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n@keyframes blink {\n50% { border-color: #ff0000;\n}\n}\n.error {\n    -webkit-animation: blink .5s step-end infinite alternate;\n            animation: blink .5s step-end infinite alternate;\n}\n\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes blink {\n50% {\n    border-color: #ff0000;\n}\n}\n@keyframes blink {\n50% {\n    border-color: #ff0000;\n}\n}\n.error {\n  -webkit-animation: blink 0.5s step-end infinite alternate;\n          animation: blink 0.5s step-end infinite alternate;\n}\n#preview {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#preview img {\n  max-width: 100%;\n  max-height: 500px;\n}\n", ""]);
 
 // exports
 
@@ -55728,7 +55733,13 @@ var render = function() {
                       _c("input", {
                         attrs: { type: "file" },
                         on: { change: _vm.onImageChange }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "preview" } }, [
+                        _vm.url
+                          ? _c("img", { attrs: { src: _vm.url } })
+                          : _vm._e()
+                      ])
                     ])
                   ])
                 ])
