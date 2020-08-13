@@ -39,6 +39,7 @@
                   <th>{{('maker.romaji')}}</th>
                   <th>{{('maker.model')}}</th>
                   <th>{{('maker.part')}}</th>
+                   <th>{{('maker.image')}}</th>
                   <th>{{('maker.action')}}</th>
                 </tr>
               </thead>
@@ -49,6 +50,7 @@
                   <td>{{compagnie.type}}</td>
                   <td>{{compagnie.date}}</td>
                   <td>{{compagnie.employes}}</td>
+                   <td>  <img v-bind:src="'storage/'+compagnie.image" width="80px" height="50px" style="border-radius:50%"></td>
                   <td>
                     <button
                       type="button"

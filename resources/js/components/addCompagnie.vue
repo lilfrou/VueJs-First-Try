@@ -214,7 +214,9 @@ export default {
             () => (this.name = ""),
             (this.type = ""),
             (this.date = ""),
-            (this.employes = "")
+            (this.employes = ""),
+             (this.image = ""),
+              (this.url = "")
           );
       }
     },

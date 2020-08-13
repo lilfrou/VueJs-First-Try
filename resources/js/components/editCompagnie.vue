@@ -27,7 +27,7 @@
                   <input
                     type="text"
                     name="name"
-                    id="name"
+                   v-bind:id="`name${compagnieToEdit.id}`"
                     class="form-control"
                     v-model="compagnieToEdit.name"
                     required
@@ -38,7 +38,7 @@
                   <input
                     type="text"
                     name="type"
-                    id="type"
+                    v-bind:id="`type${compagnieToEdit.id}`"
                     class="form-control"
                     v-model="compagnieToEdit.type"
                     required
@@ -49,7 +49,7 @@
                   <input
                     type="date"
                     name="date"
-                    id="date"
+                    v-bind:id="`date${compagnieToEdit.id}`"
                     class="form-control"
                     v-model="compagnieToEdit.date"
                     required
@@ -60,7 +60,7 @@
                   <input
                     type="number"
                     name="employes"
-                    id="employes"
+                    v-bind:id="`employes${compagnieToEdit.id}`"
                     v-model="compagnieToEdit.employes"
                     class="form-control"
                     required

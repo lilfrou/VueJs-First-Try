@@ -2498,7 +2498,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         })["finally"](function () {
           return _this.name = "";
-        }, this.type = "", this.date = "", this.employes = "");
+        }, this.type = "", this.date = "", this.employes = "", this.image = "", this.url = "");
       }
     }
   }
@@ -2515,6 +2515,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -55888,6 +55890,8 @@ var render = function() {
                           _vm._v(" "),
                           _c("th", [_vm._v(_vm._s("maker.part"))]),
                           _vm._v(" "),
+                          _c("th", [_vm._v(_vm._s("maker.image"))]),
+                          _vm._v(" "),
                           _c("th", [_vm._v(_vm._s("maker.action"))])
                         ])
                       ]),
@@ -55915,6 +55919,17 @@ var render = function() {
                               _c("td", [_vm._v(_vm._s(compagnie.date))]),
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(compagnie.employes))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("img", {
+                                  staticStyle: { "border-radius": "50%" },
+                                  attrs: {
+                                    src: "storage/" + compagnie.image,
+                                    width: "80px",
+                                    height: "50px"
+                                  }
+                                })
+                              ]),
                               _vm._v(" "),
                               _c(
                                 "td",
@@ -56289,7 +56304,7 @@ var render = function() {
                         attrs: {
                           type: "text",
                           name: "name",
-                          id: "name",
+                          id: "name" + _vm.compagnieToEdit.id,
                           required: ""
                         },
                         domProps: { value: _vm.compagnieToEdit.name },
@@ -56326,7 +56341,7 @@ var render = function() {
                         attrs: {
                           type: "text",
                           name: "type",
-                          id: "type",
+                          id: "type" + _vm.compagnieToEdit.id,
                           required: ""
                         },
                         domProps: { value: _vm.compagnieToEdit.type },
@@ -56363,7 +56378,7 @@ var render = function() {
                         attrs: {
                           type: "date",
                           name: "date",
-                          id: "date",
+                          id: "date" + _vm.compagnieToEdit.id,
                           required: ""
                         },
                         domProps: { value: _vm.compagnieToEdit.date },
@@ -56400,7 +56415,7 @@ var render = function() {
                         attrs: {
                           type: "number",
                           name: "employes",
-                          id: "employes",
+                          id: "employes" + _vm.compagnieToEdit.id,
                           required: ""
                         },
                         domProps: { value: _vm.compagnieToEdit.employes },
