@@ -24,7 +24,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: install
-      if: failure() && steps.check.outcome == 'failure'
+      if: steps.check.exitcode > 0
       run: | 
        npm install
        npm run dev
