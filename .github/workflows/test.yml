@@ -19,13 +19,13 @@ jobs:
     - name: check
       run: grep -R '?\.' resources    
     - name: Use Node.js ${{ matrix.node-version }}
-      if: steps.check.exitcode > 0
+      if: ${{ failure() }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: install
-      if: steps.check.exitcode > 0
+      if: ${{ failure() }}
       run: | 
        npm install
        npm run dev
