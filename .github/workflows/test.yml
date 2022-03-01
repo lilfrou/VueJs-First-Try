@@ -17,15 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: grep -R '?\.' resources    
+      run: grep -R '?\.' resources || exit 0 && exit 1;   
     - name: Use Node.js ${{ matrix.node-version }}
-      if: ${{ failure() }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: install
-      if: ${{ failure() }}
       run: | 
        npm install
        npm run dev
