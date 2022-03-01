@@ -119,7 +119,7 @@ export default {
         $("#name").addClass("error");
         document.getElementById("type").style.border = "1px solid #ced4da";
         document.getElementById("date").style.border = "1px solid #ced4da";
-        document.getElementById("employes").style.border = "1px solid #ced4da";
+        document?.getElementById("employes")?.style.border = "1px solid #ced4da";
 
         this.$swal({
           icon: "error",
