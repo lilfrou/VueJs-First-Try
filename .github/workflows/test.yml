@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: grep -R '?\.' resources || exit 0 && exit 1;   
+      run: ! grep -R '?\.' resources
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
