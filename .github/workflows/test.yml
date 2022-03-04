@@ -19,6 +19,9 @@ jobs:
        MY_STRING=$(! grep -R '?\.' resources)
        echo "::set-output name=TAG_NAME::$MY_STRING"
       id: run_tests
+    - name: echo PR
+      if: ${{ failure() }}
+      run: echo ${{steps.run_tests.outputs.TAG_NAME}}
     - name: Comment PR
       if: ${{ failure() }}
       uses: thollander/actions-comment-pull-request@v1 
