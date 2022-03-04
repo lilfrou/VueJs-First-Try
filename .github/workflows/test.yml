@@ -18,7 +18,7 @@ jobs:
       run: echo "::set-output name=TAG_NAME::$(ls *)"
       id: run_tests
     - name: console
-      run: echo ${{steps.run_tests.outputs.TAG_NAME}}
+      run: echo ${{join(steps.run_tests.outputs.TAG_NAME ,'\')}}
     - name: Comment PR
       uses: thollander/actions-comment-pull-request@v1 
       with:
