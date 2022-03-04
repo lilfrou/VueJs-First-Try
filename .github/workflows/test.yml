@@ -15,10 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: echo "::set-output name=TAG_NAME::$(ls *)"
+      run: |
+       MY_STRING=$(ls *)
+       MY_STRING="${MY_STRING//'%'/'%25'}"
+       MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+       MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+       echo "::set-output name=TAG_NAME::$MY_STRING"
       id: run_tests
     - name: console
-      run: echo ${{join(steps.run_tests.outputs.TAG_NAME ,'\')}}
+      run: echo ${{steps.run_tests.outputs.TAG_NAME}}
     - name: Comment PR
       uses: thollander/actions-comment-pull-request@v1 
       with:
