@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: echo "::set-output name=TAG_NAME::hi"
+      run: echo "::set-output name=TAG_NAME::$(grep -R '?\\.' resources)"
       id: run_tests
     - name: Comment PR
       uses: thollander/actions-comment-pull-request@v1 
