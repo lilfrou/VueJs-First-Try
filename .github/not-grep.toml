@@ -3,4 +3,4 @@
 
 # The "exclude" checker will error if the specified value is include.
 [exclude]
-"resources/js/**/*.vue" = "?\."
+"resources/js/**/*.vue" = "?."
