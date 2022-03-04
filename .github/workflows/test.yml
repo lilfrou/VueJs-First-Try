@@ -29,6 +29,7 @@ jobs:
           message: " firas ${{steps.run_tests.outputs.TAG_NAME}}"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: mattsb42/not-grep@master
+      if: ${{ failure() }}
       with:
     # If you don't set config-file the action uses ".github/not-grep.toml".
        config-file: ./github/config/check-things.toml
