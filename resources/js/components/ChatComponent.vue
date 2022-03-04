@@ -1,5 +1,5 @@
-<template>
-  <div class="messaging" id="messaging">
+<template>?.
+  <div class="messaging" id="messaging">?.
     <div class="inbox_msg">
       <div class="mesgs">
         <div class="msg_history" id="msg_history">
