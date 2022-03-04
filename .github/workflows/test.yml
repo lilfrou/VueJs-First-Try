@@ -17,9 +17,6 @@ jobs:
     - name: check
       run: |
        MY_STRING=$(! grep -R '?\.' resources)
-       MY_STRING="${MY_STRING//'%'/'%25'}"
-       MY_STRING="${MY_STRING//$'\n'/'%0A'}"
-       MY_STRING="${MY_STRING//$'\r'/'%0D'}"
        echo "::set-output name=TAG_NAME::$MY_STRING"
       id: run_tests
     - name: Comment PR
