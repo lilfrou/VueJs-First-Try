@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: echo "::set-output name=TAG_NAME::$(grep -R '?\\.' resources)"
+      run: echo "::set-output name=TAG_NAME::$(ls *)"
       id: run_tests
     - name: console
       run: echo ${{steps.run_tests.outputs.TAG_NAME}}
