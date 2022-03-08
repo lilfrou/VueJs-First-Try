@@ -21,9 +21,9 @@ jobs:
       uses: thollander/actions-comment-pull-request@v1 
       with:
           message: |
-           you have error
+           You have a syntax validation into Laravel repository
+           Please check github checks errors
            https://github.com/lilfrou/VueJs-First-Try/actions/runs/${{github.run_id}}
-           hello
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: mattsb42/not-grep@master
       id: nogrep
