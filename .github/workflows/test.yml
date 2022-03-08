@@ -6,27 +6,32 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: "! grep -R '?\\.' resources | grep -v '.\\vue'"
+      run: |
+       MY_STRING=$(! grep -R '?\.' resources)
+       echo "::set-output name=TAG_NAME::$MY_STRING"
+      id: run_tests
+    - name: echo PR
+      if: ${{ failure() }}
+      run: echo ${{steps.run_tests.outputs.TAG_NAME}}
     - name: Comment PR
+      if: ${{ failure() }}
       uses: thollander/actions-comment-pull-request@v1 
       with:
-          message: 'Example of message !'
+          message: |
+           You have a syntax validation into Laravel repository
+           Please check github checks errors
+           https://github.com/lilfrou/VueJs-First-Try/actions/runs/${{github.run_id}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+    - uses: mattsb42/not-grep@master
+      id: nogrep
+      if: ${{ failure() }}
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: install
-      run: | 
-       npm install
-       npm run dev
+    # If you don't set config-file the action uses ".github/not-grep.toml".
+    # If you don't set debug, passing checks will be hidden.
+       debug: true
+    - name: echonot
+      if: ${{ failure() }}
+      run: echo ${{steps.nogrep.outputs.Array}}

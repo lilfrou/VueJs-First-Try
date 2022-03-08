@@ -1,5 +1,5 @@
-<template>
-  <div class="messaging" id="messaging">
+<template>?.
+  <div class="messaging" id="messaging">?.
     <div class="inbox_msg">
       <div class="mesgs">
         <div class="msg_history" id="msg_history">
@@ -26,7 +26,7 @@
           <div class="input_msg_write">
             <textarea
               name="content"
-              id="sendReply"?.
+              id="sendReply"
               cols="30"
               rows="3"
               class="write_msg form-control"
@@ -42,7 +42,7 @@
 
               ></i>
             </div>
-          </div>?.
+          </div>
         </div>
       </div>
     </div>

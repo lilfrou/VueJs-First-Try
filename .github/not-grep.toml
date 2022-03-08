@@ -1,0 +1,6 @@
+# The "include" checker will error unless the specified value is include.
+#[include]
+
+# The "exclude" checker will error if the specified value is include.
+[exclude]
+"resources/js/**/*.vue" = "?."
