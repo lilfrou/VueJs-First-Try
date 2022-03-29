@@ -12,7 +12,7 @@ jobs:
       id: ami
       run: |
         t1=$(cat << EOF
-          ImageId: ami-006b180665fe4e6ec
+           ami-006b180665fe4e6ec
           EOF)
         echo "::set-output name=deployment_env::$(echo $t1 | grep ami)"
     - name: install
