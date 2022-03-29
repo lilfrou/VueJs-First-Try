@@ -11,10 +11,8 @@ jobs:
     - name: check
       id: ami
       run: |
-       MY_STRING="{
-          "ImageId": "ami-0c0f6c4882a0d54af"
-         }"
-        echo "::set-output name=deployment_env::$(cat $MY_STRING | grep -o '\w*ami-\w*')"
+       echo "ami-0c0f6c4882a0d54af" > ami_name.txt
+        echo "::set-output name=deployment_env::$(cat ami_name.txt | grep -o '\w*ami-\w*')"
     - name: install
       run: | 
        echo ${{ steps.ami.outputs.deployment_env }}
