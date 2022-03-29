@@ -11,7 +11,9 @@ jobs:
     - name: check
       id: ami
       run: |
-       MY_STRING="'ami-215616566616196'"
+       MY_STRING="{
+          "ImageId": "ami-0c0f6c4882a0d54af"
+         }"
         echo "::set-output name=deployment_env::$(echo $MY_STRING | grep -o '\w*ami-\w*')"
     - name: install
       run: | 
