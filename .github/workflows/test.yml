@@ -16,7 +16,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ***
           AWS_SECRET_ACCESS_KEY: ***
           OVICE_BOT_SECRET_SSH_KEY: ***
-          {"ImageId": "ami-006b180665fe4e6ec"}
+          ImageId: ami-006b180665fe4e6ec
           EOF)
         echo "::set-output name=deployment_env::$(echo $t1 | grep ami)"
     - name: install
