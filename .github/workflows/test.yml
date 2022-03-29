@@ -6,27 +6,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+   
     steps:
     - uses: actions/checkout@v2
     - name: check
-      run: "! grep -R '?\\.' resources | grep -v '.\\vue'"
-    - name: Comment PR
-      uses: thollander/actions-comment-pull-request@v1 
-      with:
-          message: 'Example of message !'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      id: ami
+      run: |
+        t1= {"ImageId": "ami-006b180665fe4e6ec"}
+        echo "::set-output name=deployment_env::$t1"
     - name: install
       run: | 
-       npm install
-       npm run dev
+       echo ${{ steps.ami.outputs.deployment_env }}
