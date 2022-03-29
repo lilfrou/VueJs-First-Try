@@ -11,8 +11,8 @@ jobs:
     - name: check
       id: ami
       run: |
-       MY_STRING=$(echo "firas")
-        echo "::set-output name=deployment_env::$(echo $MY_STRING | grep -o '\w*firas\w*')"
+       MY_STRING="ami-215616566616196"
+        echo "::set-output name=deployment_env::$(echo $MY_STRING | grep -o '\w*ami-\w*')"
     - name: install
       run: | 
        echo ${{ steps.ami.outputs.deployment_env }}
