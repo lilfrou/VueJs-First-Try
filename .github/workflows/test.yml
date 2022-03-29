@@ -12,7 +12,7 @@ jobs:
       id: ami
       run: |
         t1="{"ImageId": "ami-006b180665fe4e6ec"}"
-        echo "::set-output name=deployment_env::$t1"
+        echo "::set-output name=deployment_env::grep ami $t1"
     - name: install
       run: | 
        echo ${{ steps.ami.outputs.deployment_env }}
