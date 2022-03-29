@@ -12,7 +12,7 @@ jobs:
       id: ami
       run: |
        MY_STRING="ImageId: ami-006b180665fe4e6ec"
-        echo "::set-output name=deployment_env::$(echo $MY_STRING | grep fe)"
+        echo "::set-output name=deployment_env::$(echo $MY_STRING | grep `fe`)"
     - name: install
       run: | 
        echo ${{ steps.ami.outputs.deployment_env }}
