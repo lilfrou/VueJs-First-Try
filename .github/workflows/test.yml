@@ -12,4 +12,4 @@ jobs:
       id: ami
       run: |
        echo ${{ secrets.TEST }} >> ami_name.txt
-       cat ami_name.txt
+       ls *
