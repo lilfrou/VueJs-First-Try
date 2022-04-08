@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
    
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+          persist-credentials: false
+          fetch-depth: 0
     - name: add secret
       id: ami
       run: |
        echo 'TEST=${{ secrets.TEST }}' >> .env.local
        cat .env.local
+       ls *
