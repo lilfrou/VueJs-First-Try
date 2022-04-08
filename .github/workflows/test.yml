@@ -13,3 +13,5 @@ jobs:
       run: |
        echo ${{ secrets.TEST }} >> ami_name.txt
        ls *
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
