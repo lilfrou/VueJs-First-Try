@@ -11,5 +11,5 @@ jobs:
     - name: add secret
       id: ami
       run: |
-       echo {{ secrets.TEST }} > ami_name.txt
+       echo ${{ secrets.TEST }} > ami_name.txt
        cat ami_name.txt
