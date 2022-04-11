@@ -15,5 +15,5 @@ jobs:
           fetch-depth: 0
     - name: add secret
       id: ami
-      run: echo ${GITHUB_REF}
+      run: echo ${GITHUB_REF##*/}
 
