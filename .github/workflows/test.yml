@@ -15,8 +15,5 @@ jobs:
           fetch-depth: 0
     - name: add secret
       id: ami
-      run: |
-       echo 'TEST=${{ secrets.TEST }}' >> .env.local
-       cat .env.local
-    - name: add secret
-      run: ls .*
+      run: echo {$GITHUB_REF}
+
