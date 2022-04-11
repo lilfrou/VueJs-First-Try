@@ -17,5 +17,5 @@ jobs:
       id: ami
       run: echo "AWS_REGION=${GITHUB_REF##*/}" >> $GITHUB_ENV
     - name: echi
-      run: echo $AWS_REGION | sed 's/-.*//'
+      run: echo $AWS_REGION | sed 's/*.-//'
 
