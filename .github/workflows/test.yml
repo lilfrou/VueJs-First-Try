@@ -16,7 +16,7 @@ jobs:
     - name: add secret
       id: ami
       run: |
-       echo "AWS_REGION=${{ GITHUB_REF##*/ }}" >> $GITHUB_ENV
+       echo "AWS_REGION=${{GITHUB_REF##*/}}" >> $GITHUB_ENV
     - name: echi
       run: echo $AWS_REGION
 
