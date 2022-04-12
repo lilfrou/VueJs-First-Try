@@ -6,8 +6,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env: 
-     AWS_REGION: ap-northeast-1
    
     steps:
     - name: Checkout code
@@ -21,6 +19,7 @@ jobs:
         
     - name: script testing
       run: |
+          echo $CURRENT_BRANCH
           case $CURRENT_BRANCH in
           release) echo "AWS_REGION=ap-northeast-1" >> $GITHUB_ENV ;;
           release-eu) echo AWS_REGION=eu-central-1 >> $GITHUB_ENV ;;
