@@ -16,7 +16,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
     - name: add secret
-      run: echo "BRANCH=${ GITHUB_REF##*/ }" >> $GITHUB_ENV
+      run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
         
     - name: script testing
       run: |
