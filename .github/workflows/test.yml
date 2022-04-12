@@ -16,12 +16,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
     - name: add secret
-      id: ami
-      run: echo "AWS_REGION=${GITHUB_REF##*/}" >> $GITHUB_ENV
-      
-    - name: Export current branch
-      run: |
-        echo "CURRENT_BRANCH=${{ GITHUB_REF##*/ }}" >> $GITHUB_ENV
+      run: echo "CURRENT_BRANCH=${ GITHUB_REF##*/ }" >> $GITHUB_ENV
         
     - name: script testing
       run: |
