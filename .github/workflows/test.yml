@@ -19,5 +19,7 @@ jobs:
       run: | 
        echo $AWS_REGION
        echo "AWS_REGION=us-west-2" >> $GITHUB_ENV
+    - name: echi
+      run: | 
        echo $AWS_REGION
 
