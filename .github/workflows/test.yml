@@ -16,5 +16,8 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
     - name: echi
-      run: echo $AWS_REGION
+      run: | 
+       echo $AWS_REGION
+       echo "AWS_REGION=us-west-2" >> $GITHUB_ENV
+       echo $AWS_REGION
 
