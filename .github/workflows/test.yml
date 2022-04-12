@@ -21,7 +21,7 @@ jobs:
       
     - name: Export current branch
       run: |
-        echo "CURRENT_BRANCH=${ GITHUB_REF##*/ }" >> $GITHUB_ENV
+        echo "CURRENT_BRANCH=${{ GITHUB_REF##*/ }}" >> $GITHUB_ENV
         
     - name: script testing
       run: |
