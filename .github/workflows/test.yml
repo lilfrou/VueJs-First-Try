@@ -15,20 +15,18 @@ jobs:
       with:
           persist-credentials: false
           fetch-depth: 0
-    - name: echi
-      run: | 
-       echo $AWS_REGION
-       echo "AWS_REGION=us-west-2" >> $GITHUB_ENV
-    - name: echi
-      run: | 
-       echo $AWS_REGION
+    - name: Export current branch
+      run: |
+        echo "CURRENT_BRANCH=${ GITHUB_REF##*/ }" >> $GITHUB_ENV
     - name: script testing
       run: |
-          case 4.4 in
-          4.4) echo Google Nexus 5 ;;
-          6) echo "Google Nexus 6" ;;
-          8) echo "Google Pixel 2" ;;
-          11) echo "Google Pixel 4" ;;
-          *) echo "Invalid option!" && exit 1 ;;
+          case $CURRENT_BRANCH in
+          release) echo AWS_REGION=ap-northeast-1 >> $GITHUB_ENV ;;
+          release-eu) echo AWS_REGION=eu-central-1 >> $GITHUB_ENV ;;
+          release-us) echo AWS_REGION=us-west-2 >> $GITHUB_ENV ;;
+          *) echo "Invalid branch name!" && exit 1 ;;
           esac
+    - name: echi
+      run: | 
+       echo $AWS_REGION
 
