@@ -19,16 +19,4 @@ jobs:
     - name: Export current branch
       run: |
         echo "CURRENT_BRANCH=${ GITHUB_REF##*/ }" >> $GITHUB_ENV
-        
-    - name: script testing
-      run: |
-          case $CURRENT_BRANCH in
-          release) echo "AWS_REGION=ap-northeast-1" >> $GITHUB_ENV ;;
-          release-eu) echo AWS_REGION=eu-central-1 >> $GITHUB_ENV ;;
-          release-us) echo AWS_REGION=us-west-2 >> $GITHUB_ENV ;;
-          *) echo "Invalid branch name!" && exit 1 ;;
-          esac
-    - name: echi
-      run: | 
-       echo $AWS_REGION
 
