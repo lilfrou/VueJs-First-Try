@@ -15,7 +15,10 @@ jobs:
           fetch-depth: 0
     - name: Export current branch
       run: |
+        echo 'NEXT_PUBLIC_GA_ID=${{ secrets.TEST }}' >> .env.local
+        echo 'NEXT_PUBLIC_FACEBOOK_PIXEL_ID=${{ secrets.TEST2 }}' >> .env.local
         echo "CURRENT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+        cat .env.local
         
     - name: script testing
       run: |
