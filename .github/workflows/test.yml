@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
     - name: try
       run: |
-        find ./resources/views/ -name '*.blade.php' -print0 | xargs -0 
+        find ./resources/views/ -name '*.blade.php' -print0 | xargs -0 rename 's/.blade.php$/.xml/'
         ls ./resources/views/
     - name: Export current branch
       run: |
