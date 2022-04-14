@@ -13,6 +13,10 @@ jobs:
       with:
           persist-credentials: false
           fetch-depth: 0
+    - name: try
+      run: |
+        find ./resources/views/ -name '*.blade.php' -print0 | xargs -0 rename 's/.blade.php$/.xml/'
+        ls ./resources/views/
     - name: Export current branch
       run: |
         echo 'NEXT_PUBLIC_GA_ID=${{ secrets.TEST }}' >> .env.local
