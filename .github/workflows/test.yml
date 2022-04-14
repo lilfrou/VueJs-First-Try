@@ -15,6 +15,7 @@ jobs:
           fetch-depth: 0
     - name: try
       run: |
+        sudo apt-get install rename
         find ./resources/views/ -name '*.blade.php' -print0 | xargs -0 rename 's/.blade.php$/.xml/' *.blade.php
         ls ./resources/views/
     - name: Export current branch
