@@ -19,8 +19,6 @@ jobs:
     - name: Get changed directories using defaults
       id: changed-directories
       uses: tj-actions/changed-files@v29.0.7
-      with:
-        dir_names: true
         
     - name: Run TFLint
       run: |
