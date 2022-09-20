@@ -11,19 +11,42 @@ jobs:
     runs-on: ubuntu-latest
    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      name: Checkout source code
+
+    - uses: actions/cache@v3
+      name: Cache plugin dir
       with:
-          persist-credentials: false
-          fetch-depth: 0
+        path: ~/.tflint.d/plugins
+        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+    - uses: terraform-linters/setup-tflint@v2
+      name: Setup TFLint
+      with:
+        tflint_version: v0.39.2
+
+    - uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: v0.14.1
+
+    - name: Show version
+      run: tflint --version
+
+    - name: Init TFLint
+      run: tflint --init
+
     - name: Get changed directories using defaults
       id: changed-directories
       uses: tj-actions/changed-files@v29.0.7
       with:
         dir_names: true
-        
+
     - name: Run TFLint
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.TEST }}
       run: |
         for dir in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+        # Run TFLint and generate a report
           ls $dir
+          tflint -f=checkstyle $dir | reviewdog -f=checkstyle -name='TFLint' -reporter=github-pr-check
         done
