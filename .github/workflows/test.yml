@@ -48,6 +48,5 @@ jobs:
         for dir in ${{ steps.changed-directories.outputs.all_changed_files }}; do
         # Run TFLint and generate a report
           ls $dir
-          mkdir -p tflint_result/$dir
           tflint -f=checkstyle $dir | reviewdog -f=checkstyle -name='TFLint' -reporter=github-pr-check
         done
