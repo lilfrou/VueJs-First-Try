@@ -13,5 +13,5 @@ jobs:
           persist-credentials: false
           
       - name: Run build script
-        run: ./app/run.sh
+        run: ./app/run
         shell: bash
