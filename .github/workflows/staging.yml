@@ -13,5 +13,7 @@ jobs:
           persist-credentials: false
           
       - name: Run build script
-        run: ./app/run
+        run: |
+         chmod +x ./app/run
+         ./app/run
         shell: bash
