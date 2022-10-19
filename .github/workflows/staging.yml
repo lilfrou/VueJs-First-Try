@@ -13,9 +13,8 @@ jobs:
         id: date
         run: |
          echo "date=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_OUTPUT
-         echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
         
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: ${{ steps.date.outputs.date }}
-          message: ${{ steps.date.outputs.sha_short }}
+          message: ${{ github.event.head_commit.message }}
