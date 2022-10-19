@@ -1,19 +1,4 @@
 #!/bin/bash
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-
-if [[ "${CURRENT_BRANCH}" != "master" ]]; then
-    echo "This script can only be ran on the 'master' branch."
-    exit 1
-fi
-
-# check if local master branch is up to date
-
-REMOTE_HEAD=$(git rev-list -n 1 origin/master)
-LOCAL_HEAD=$(git rev-list -n 1 HEAD)
-if [[ "${REMOTE_HEAD}" != "${LOCAL_HEAD}" ]]; then
-    echo "master branch is not up to date. run 'git pull' first."
-    exit 1
-fi
 
 # Get the latest tag
 LATEST=$(git describe --tags --abbrev=0)
@@ -48,24 +33,6 @@ fi
 
 echo "Next: ${NEXT}"
 echo
-
-read -p "The next deployment will be tagged as ${NEXT}. Do you want to proceed? (Y/n) " DEPLOY
-
-# Set it to "Y" if no input
-if [[ -z "${DEPLOY}" ]]; then
-    DEPLOY="Y"
-fi
-
-# Exit if the input is not 'Y' or 'n'
-if [[ "${DEPLOY}" != "Y" && "${DEPLOY}" != "n" ]]; then
-    echo "Input not expected: ${DEPLOY}"
-    exit 1
-fi
-
-# Just quit if answer is no
-if [[ "${DEPLOY}" == "n" ]]; then
-    exit 0
-fi
 
 # Tag the repository with the new deployment tag.
 # GitHub actions will then deploy the tag.
