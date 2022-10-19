@@ -1,4 +1,4 @@
-name: Build assets for Ovice Tmp Lp
+name: CI build
 
 on: workflow_dispatch
       
