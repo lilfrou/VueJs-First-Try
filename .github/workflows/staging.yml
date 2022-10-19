@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        
       - uses: rickstaa/action-create-tag@v1
         env:
          GITHUB_CONTEXT: ${{ toJson(github) }}
