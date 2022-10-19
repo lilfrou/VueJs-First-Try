@@ -1,0 +1,17 @@
+name: Build assets for Ovice Tmp Lp
+
+on: workflow_dispatch
+      
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          
+      - name: Run build script
+        run: ./app/run.sh
+        shell: bash
