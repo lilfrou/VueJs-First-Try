@@ -1,17 +1,16 @@
 name: Build assets for Ovice Tmp Lp
+
 on: workflow_dispatch
       
+
 jobs:
-  build-and-push:
+  create-tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: rickstaa/action-create-tag@v1
+        env:
+         GITHUB_CONTEXT: ${{ toJson(github) }}
         with:
-          persist-credentials: false
-
-      - name: Run build script
-        run: |
-         chmod +x ./app/run
-         ./app/run
-        shell: bash
+          tag: $GITHUB_CONTEXT
+          message: "Latest release"
