@@ -2,6 +2,9 @@ on: [push]
 
 jobs:
   zap_scan:
+    permissions:
+      pages: write
+      id-token: write 
     runs-on: ubuntu-latest
     name: Scan the webapplication
     steps:
@@ -16,3 +19,9 @@ jobs:
           target: 'https://www.ovice.com'
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-a'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        with:
+            artifact_name: zap_scan
