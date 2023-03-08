@@ -23,6 +23,10 @@ jobs:
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-a'
           
+      - uses: actions/upload-pages-artifact@v1
+        with:
+         name: zap_scan
+        
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
