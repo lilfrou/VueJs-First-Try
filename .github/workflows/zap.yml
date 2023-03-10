@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: master
+          
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.7.0
         with:
@@ -23,12 +24,3 @@ jobs:
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-a'
           
-      - uses: actions/upload-pages-artifact@v1
-        with:
-         name: zap_scan
-        
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-        with:
-            artifact_name: zap_scan
