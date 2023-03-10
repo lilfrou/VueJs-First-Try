@@ -22,5 +22,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://www.ovice.com'
           docker_name: 'owasp/zap2docker-stable'
-          cmd_options: '-a'
           
