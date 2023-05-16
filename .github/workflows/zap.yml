@@ -22,6 +22,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'https://app.staging.ovice.io'
           docker_name: 'owasp/zap2docker-stable'
-          cmd_options: '-j -U test1 -n few.context'
+          cmd_options: '-j -U test1 -n true.context'
           fail_action: false
           

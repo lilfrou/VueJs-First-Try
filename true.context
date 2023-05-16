@@ -66,7 +66,8 @@
             <pollheaders/>
             <pollfreq>60</pollfreq>
             <pollunits>REQUESTS</pollunits>
-            <loggedout>\Q{"user":{}}\E</loggedout>
+            <loggedin>\Q"message":"OK"\E</loggedin>
+            <loggedout>\Q{"errors":{"detail":"Not Found"},"success":false}\E</loggedout>
             <form>
                 <loginurl>https://staging.api.ovice.io/api/v1/login</loginurl>
                 <loginbody>{"email":"{%username%}","password":"{%password%}"}</loginbody>
@@ -74,7 +75,7 @@
             </form>
         </authentication>
         <users>
-            <user>3740;true;dGVzdDE=;5;Zm1oZW5uaUBvdmljZS5jbw==~TGlsRnJvdTI1JSQjQDE5OTQrKw==~</user>
+            <user>3740;true;dGVzdDE=;5;Zm1oZW5uaUBvdmljZS5jbw==~RmlyYXNmbGFzaHE1~</user>
         </users>
         <forceduser>3740</forceduser>
         <session>
