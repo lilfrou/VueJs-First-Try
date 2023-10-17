@@ -1,6 +1,7 @@
 name: CI build
 
-on: workflow_dispatch
+on:
+ push:
       
 
 jobs:
@@ -12,9 +13,5 @@ jobs:
       - name: Get current date
         id: date
         run: |
-         echo "date=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_OUTPUT
-        
-      - uses: rickstaa/action-create-tag@v1
-        with:
-          tag: ${{ steps.date.outputs.date }}
-          message: ${{ github.event.head_commit.message }}
+         sudo apt-get install -y allure
+         allure --version
